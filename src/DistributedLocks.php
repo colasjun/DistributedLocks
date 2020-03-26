@@ -66,5 +66,8 @@ class DistributedLocks
         return true;
     }
 
+    /*
+     * 防止克隆
+     */
     private function __clone() {}
 }
