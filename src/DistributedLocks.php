@@ -17,12 +17,12 @@ class DistributedLocks
     }
 
     /**
-     * GetLock 获取锁函数
+     * getLock 获取锁函数
      * @param $Key string 锁key
      * @param $Expire string 锁定的时间(秒)
      * @return bool 获取结果 成功true 失败false 成功外面做业务逻辑处理
      */
-    public function GetLock($Key, $Expire)
+    public function getLock($Key, $Expire)
     {
         // 判断参数是否为空
         if (empty($Key) || empty($Expire)) {
@@ -53,11 +53,11 @@ class DistributedLocks
     }
 
     /**
-     * ReleaseLock 释放锁函数
+     * releaseLock 释放锁函数
      * @param $Key string 锁key
      * @return bool 释放结果
      */
-    public function ReleaseLock($Key)
+    public function releaseLock($Key)
     {
         if ($this->Handler->ttl($Key)) {
             $this->Handler->del($Key);
@@ -68,6 +68,10 @@ class DistributedLocks
 
     /*
      * 防止克隆
+     * @return bool false
      */
-    private function __clone() {}
+    private function __clone()
+    {
+        return false;
+    }
 }
