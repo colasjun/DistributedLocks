@@ -53,11 +53,11 @@ class DistributedLocks
     }
 
     /**
-     * 释放锁函数
+     * ReleaseLock 释放锁函数
      * @param $Key string 锁key
      * @return bool 释放结果
      */
-    public function release($Key)
+    public function ReleaseLock($Key)
     {
         if ($this->Handler->ttl($Key)) {
             $this->Handler->del($Key);
